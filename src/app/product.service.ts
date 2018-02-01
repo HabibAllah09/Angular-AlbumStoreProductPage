@@ -6,6 +6,14 @@ import { Http, Response } from '@angular/http';
 // we have to import it from rxjs
 import 'rxjs/add/operator/map';
 
+// as in OOP in typescript you can create new types
+// new type called interface
+// imporing the interface is essential to use it.
+import { Album } from './album';
+
+// 
+import { Observable } from 'rxjs/Observable';
+
 @Injectable()
 export class ProductService {
 
@@ -19,9 +27,9 @@ export class ProductService {
   // the response is not a json
   // the map function maps the response into json
   // the .json function turn the response into json
-  getAlbum(id: number) {
+  getAlbum(id: number): Observable<Album> {
     return this._http.get(this._albumUrl).map(
-      (response) => response.json()
+      (response) => <Album>response.json()
     );
   }
 

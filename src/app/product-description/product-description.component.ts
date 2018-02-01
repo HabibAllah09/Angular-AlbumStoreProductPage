@@ -17,12 +17,13 @@ export class ProductDescriptionComponent implements OnInit {
   // ... automatically added to the 'this' object.
   constructor(private _productService: ProductService) { }
 
+  // #2: when the response from the server arrives
+  // the callback passed to the subscribe
+  // is called by the observable.
+
+  // #3: the response now is stored in the class properties
   ngOnInit() {
-    // #2: when the response from the server arrives
-    // the callback passed to the subscribe
-    // is called by the observable.
     this._productService.getAlbum(1).subscribe(
-      // #3: the response now is stored in the class properties
       response => this.albumInfo = response
     );
   }

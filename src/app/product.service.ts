@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 // new type called interface
 // imporing the interface is essential to use it.
 import { Album } from './album';
+import { Product } from './product';
 
 // #4: in RxJS, you represent asynchronous data streams using ...
 // ... Observable sequences called observalbes.
@@ -27,9 +28,8 @@ export class ProductService {
 
   constructor(private _http: Http) { }
 
-  // private _albumUrl: string = '../assets/album.json';
-  // there's no need to declair the type of the class property
   private _albumUrl = '../assets/album.json';
+  private _productsUrl = '../assets/products.json';
 
   // #2: the get returns a response
   // the response is not a json
@@ -37,7 +37,13 @@ export class ProductService {
   // the .json function turn the response into json
   getAlbum(id: number): Observable<Album> {
     return this._http.get(this._albumUrl).map(
-      (response) => <Album>response.json()
+      response => <Album>response.json()
+    );
+  };
+
+  getProducts(): Observable<Product[]> {
+    return this._http.get(this._productsUrl).map(
+      response => <Product[]>response.json()
     );
   }
 

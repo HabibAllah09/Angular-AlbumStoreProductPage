@@ -1,17 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
-// to map the http output as json
+// #1: to map the http output as json
 // and to use the map function
 // we have to import it from rxjs
 import 'rxjs/add/operator/map';
 
-// as in OOP in typescript you can create new types
+// #3: just like OOP, in typescript you can create new types
 // new type called interface
 // imporing the interface is essential to use it.
 import { Album } from './album';
 
-// 
+// #4: in RxJS, you represent asynchronous data streams using ...
+// ... Observable sequences called observalbes.
+// Observables are very flexable and can be used ...
+// ... using push or pull patterns
+// push patterns: we subscribe to the source stream ...
+// ... and react to new data as soon as is made available
+// pull patterns: we are using the same operations as push ...
+// ... but synchronously. this happens when using Arrays, ...
+// ... Generators or Iterables
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -23,7 +31,7 @@ export class ProductService {
   // there's no need to declair the type of the class property
   private _albumUrl = '../assets/album.json';
 
-  // the get returns a response
+  // #2: the get returns a response
   // the response is not a json
   // the map function maps the response into json
   // the .json function turn the response into json

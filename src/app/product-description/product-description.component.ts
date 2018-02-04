@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ProductService } from '../product.service';
+import { Album } from 'app/album';
 
 @Component({
   selector: 'app-product-description',
@@ -11,7 +12,7 @@ export class ProductDescriptionComponent implements OnInit {
 
   // #4: to be able to use a class property we need ...
   // ... to define a one in the class
-  albumInfo;
+  albumInfo: Album;
 
   // #1: in type script: the constructor arguments will be ...
   // ... automatically added to the 'this' object.
